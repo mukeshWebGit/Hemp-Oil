@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="233" height="111.993" viewBox="0 0 233 111.993">
+  <g id="Group_2901" data-name="Group 2901" transform="translate(-567 -20)">
+    <g id="Group_3" data-name="Group 3" transform="translate(373.681 -431.642)">
+      <path id="Path_12" data-name="Path 12" d="M341.089,697.135a39.5,39.5,0,0,1-40.375,10.405,39.5,39.5,0,0,1,40.375-10.405Z" transform="translate(-31.77 -155.171)" fill="#fff"/>
+      <path id="Path_13" data-name="Path 13" d="M309.319,670.675s-14.85,4.345-30.866.387-27.134-14.719-27.134-14.719,14.85-4.344,30.866-.387S309.319,670.675,309.319,670.675Z" transform="translate(0 -128.711)" fill="#fff"/>
+      <path id="Path_14" data-name="Path 14" d="M314.464,602.811s-19.392-4.908-34.634-19.828-20.562-34.2-20.562-34.2,19.392,4.908,34.634,19.828S314.464,602.811,314.464,602.811Z" transform="translate(-5.113 -60.847)" fill="#fff"/>
+      <path id="Path_15" data-name="Path 15" d="M393.262,541.965s-11.431-19.652-11.431-43.893,11.431-43.893,11.431-43.893,11.432,19.652,11.432,43.893S393.262,541.965,393.262,541.965Z" transform="translate(-83.944 0)" fill="#fff"/>
+      <path id="Path_16" data-name="Path 16" d="M413.869,602.811s19.392-4.908,34.634-19.828,20.562-34.2,20.562-34.2-19.392,4.908-34.634,19.828S413.869,602.811,413.869,602.811Z" transform="translate(-104.55 -60.847)" fill="#fff"/>
+      <path id="Path_17" data-name="Path 17" d="M413.869,670.675s14.85,4.345,30.866.387,27.134-14.719,27.134-14.719S457.019,652,441,655.957,413.869,670.675,413.869,670.675Z" transform="translate(-104.55 -128.711)" fill="#fff"/>
+      <path id="Path_18" data-name="Path 18" d="M413.869,697.135a39.5,39.5,0,0,0,40.375,10.405,39.5,39.5,0,0,0-40.375-10.405Z" transform="translate(-104.55 -155.171)" fill="#fff"/>
+      <line id="Line_2" data-name="Line 2" y2="18.67" transform="translate(309.319 541.965)" fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="6"/>
+    </g>
+    <text id="Hemp_Oil" data-name="Hemp Oil" transform="translate(683 89)" fill="#8dcb78" font-size="22" font-family="Roboto-Regular, Roboto" letter-spacing="0.1em"><tspan x="-57.533" y="0">HEMP OIL</tspan></text>
+    <text id="Premium" transform="translate(567 20)" fill="#000934" font-size="40" font-family="Roboto-Bold, Roboto" font-weight="700"><tspan x="25.553" y="38">PREMIUM</tspan></text>
+  </g>
+</svg>
