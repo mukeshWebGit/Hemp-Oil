@@ -1,14 +1,53 @@
-import { Link } from "react-router-dom";
-import {Data} from "../component/Data"; 
+import { Link } from "react-router-dom"; 
+import axios from 'axios';
+import { useEffect, useReducer } from "react";
+import logger from 'use-reducer-logger';
+
+const reducer = (state, action) => {
+	switch (action.type) {
+	  case 'FETCH_REQUEST':
+		return { ...state, loading: true };
+	  case 'FETCH_SUCCESS':
+		return { ...state, products: action.payload, loading: false };
+	  case 'FETCH_FAIL':
+		return { ...state, loading: false, error: action.payload };
+	  default:
+		return state;
+	}
+  };
 
 export const Products = () => {   
-	console.log(Data);
+	const [{ loading, error, products }, dispatch] = useReducer(logger(reducer), {
+		products: [],
+		loading: true,
+		error: '',
+	  });
+	  // const [products, setProducts] = useState([]);
+	  useEffect(() => {
+		const fetchData = async () => {
+		  dispatch({ type: 'FETCH_REQUEST' });
+		  try {
+			const result = await axios.get('/api/products');
+			dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
+		  } catch (err) {
+			dispatch({ type: 'FETCH_FAIL', payload: err.message });
+		  }
+	
+		  // setProducts(result.data);
+		};
+		fetchData();
+	  }, []);
     return(
        
 <section className="productListSec pt-45">
 	<div className="container text-center"> 
 		<div className="row row-10">	
-			{Data.products.map((product) => (
+		{loading ? (
+          <div>Loading...</div>
+        ) : error ? (
+          <div>{error}</div>
+        ) : (
+			products.map((product) => (
 				<div className="col-md-4 px-10 products" key={product.slug}>
                 
 				<div className="productImg">
@@ -22,8 +61,8 @@ export const Products = () => {
 				</h4>
 				<div className="productBtn pt-15"><Link to={`/product/${product.slug}`} className="blueBtn">More Info</Link></div> 
 			</div>
-			))}
-				
+			))
+		)}
 			 	
 		</div>	
 	</div>

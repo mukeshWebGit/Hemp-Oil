@@ -3,13 +3,13 @@ import { Data } from './Data.js';
 
 const app = express();
 
-app.get('/api/products', (res, req) => {
+app.get('/api/products', (req, res) => {
     res.send(Data.products);
 });
 
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
-    console.log(`server at http://localhost/${port}`);
+    console.log(`server at http://localhost:${port}`);
 });
 
