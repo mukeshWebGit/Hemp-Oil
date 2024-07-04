@@ -1,6 +1,5 @@
 import React from "react";
-import { Data } from "../component/Data";
-import { Link } from "react-router-dom";
+import { Products } from "../component/Products";
 
 export const ProductList = () => {
     return(
@@ -23,21 +22,7 @@ export const ProductList = () => {
 <section class="productListSec">
 	<div class="container text-center"> 
     <div className="row row-10">	
-			{Data.products.map((product) => (
-				<div className="col-md-4 px-10 products" key={product.slug}>
-                
-				<div className="productImg">
-					<img src={product.image} alt="Hemp Oil" />
-				</div>
-				<h4 className="productName">
-					{product.name}
-				</h4>
-				<h4 className="productPrice">
-					{product.price}
-				</h4>
-				<div className="productBtn pt-15"><Link to={`/product/${product.slug}`} className="blueBtn">More Info</Link></div> 
-			</div>
-			))}
+	<Products></Products>
 				
 			 	
 		</div>

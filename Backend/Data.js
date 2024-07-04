@@ -1,4 +1,4 @@
-export const Data = {
+const Data = {
     products: [
         {
             _id : '1',
@@ -8,6 +8,7 @@ export const Data = {
             image: '/images/product-demo.jpg',
             imageBig: '/images/product-demo.jpg',
             unit : '10 ml', 
+            countInStock:'100',
             price: 6.99,  
         },
         {
@@ -16,8 +17,9 @@ export const Data = {
             name: 'Full Spectrum Hemp Oil 20 ml', 
             slug: 'full-spectrum-hemp-oil-20ml',
             image: '/images/product-demo.jpg',
-            imageBig: '/images/product-demo.jpg',
+             imageBig: '/images/product-demo.jpg',
             unit : '20 ml', 
+            countInStock:'4',
             price: 12.99,  
         },
         {
@@ -28,7 +30,9 @@ export const Data = {
             image: '/images/product-demo.jpg',
             imageBig: '/images/product-demo.jpg',
             unit : '30 ml', 
+            countInStock:'2',
             price: 17.99,  
         },
     ]
-}
+};
+export default Data;

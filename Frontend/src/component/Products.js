@@ -22,7 +22,6 @@ export const Products = () => {
 		loading: true,
 		error: '',
 	  });
-	  // const [products, setProducts] = useState([]);
 	  useEffect(() => {
 		const fetchData = async () => {
 		  dispatch({ type: 'FETCH_REQUEST' });
@@ -32,8 +31,6 @@ export const Products = () => {
 		  } catch (err) {
 			dispatch({ type: 'FETCH_FAIL', payload: err.message });
 		  }
-	
-		  // setProducts(result.data);
 		};
 		fetchData();
 	  }, []);
@@ -54,7 +51,7 @@ export const Products = () => {
 					<img src={product.image} alt="Hemp Oil" />
 				</div>
 				<h4 className="productName">
-					{product.name}
+					{product.name} 
 				</h4>
 				<h4 className="productPrice">
 					{product.price}

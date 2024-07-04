@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Products } from "./Products";
+import { Products } from "../component/Products";
 
 export const Home = () => {
     return(
