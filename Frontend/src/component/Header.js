@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom"
+import { Store } from "../Store";
+import { useContext } from "react";
 
 export const Header = () => {
+  const { state } = useContext(Store);
+  const { cart } = state;
     return(
         <header className="header fixed-top">
         <div className="container">
@@ -46,10 +50,18 @@ export const Header = () => {
         </ul>
       </div>
     </nav> 
-    <div className="cart"><i className="fas fa-shopping-basket"></i> <span className="quantity">1</span></div>
+    <div className="cart"><Link to="/cart"> <i className="fas fa-shopping-basket"></i> <span className="quantity"> 
+    
+          <span>  {cart.cartItems.length > 0 && (
+             cart.cartItems.length 
+             )}</span>
+          
+      </span></Link></div>
     </div> 
                 </div>
-        <div className="logo"><Link to="/"><img src="/images/hempOil-demo.png" alt="Hemp Oil" /></Link> </div>
+        
+                <div className="logo"><Link to="/"><img src="/images/hempOil-demo.png" alt="Hemp Oil" /></Link> </div>
+
         </div>
     </header>
     )

@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState } from "react";
 import { Link } from "react-router-dom"; 
 import { useParams } from "react-router-dom";
+import { Store } from "../Store";
  
 const reducer = (state, action) => {
 	switch (action.type) {
@@ -15,7 +16,7 @@ const reducer = (state, action) => {
 		return state;
 	}
   };
-
+  
 export const ProductDetails = () =>{
     const params = useParams();
     const {slug} = params;
@@ -25,6 +26,14 @@ export const ProductDetails = () =>{
 		loading: true,
 		error: '', 
 	  });
+
+	  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const addToCartHandler = () => {
+    ctxDispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...product, quantity: 1 },
+    });
+  };
 	  // const [products, setProducts] = useState([]);
 	  useEffect(() => {
 		const fetchData = async () => {
@@ -101,7 +110,7 @@ export const ProductDetails = () =>{
 						</div>
 						<div className="row "> 
 						<div className="col option"> </div>
-						<div className="col-md-10"><a href="javascript" className="addBasket">add to basket</a></div>  
+						<div className="col-md-10"><button onClick={addToCartHandler} className="addBasket">add to basket</button></div>  
 						</div>
 					</div>
 				</div>
