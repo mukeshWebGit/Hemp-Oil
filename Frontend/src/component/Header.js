@@ -52,9 +52,9 @@ export const Header = () => {
     </nav> 
     <div className="cart"><Link to="/cart"> <i className="fas fa-shopping-basket"></i> <span className="quantity"> 
     
-          <span>  {cart.cartItems.length > 0 && (
-             cart.cartItems.length 
-             )}</span>
+           {cart.cartItems.length > 0 && (
+             <span>  {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}</span>
+             )}
           
       </span></Link></div>
     </div> 

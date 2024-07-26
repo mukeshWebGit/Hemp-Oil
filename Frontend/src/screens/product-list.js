@@ -19,15 +19,11 @@ export const ProductList = () => {
 				  
 	</div>
 </section>
-<section class="productListSec">
-	<div class="container text-center"> 
-    <div className="row row-10">	
+
 	<Products></Products>
 				
 			 	
-		</div>
-    </div>
-</section>
+	
         </>
     )
 }

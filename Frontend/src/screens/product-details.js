@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useReducer, useState } from "react";
-import { Link } from "react-router-dom"; 
+import { Link, useNavigate } from "react-router-dom"; 
 import { useParams } from "react-router-dom";
 import { Store } from "../Store";
  
@@ -18,6 +18,7 @@ const reducer = (state, action) => {
   };
   
 export const ProductDetails = () =>{
+	const navigate = useNavigate();
     const params = useParams();
     const {slug} = params;
 
@@ -25,15 +26,7 @@ export const ProductDetails = () =>{
 		product: [],
 		loading: true,
 		error: '', 
-	  });
-
-	  const { state, dispatch: ctxDispatch } = useContext(Store);
-  const addToCartHandler = () => {
-    ctxDispatch({
-      type: 'CART_ADD_ITEM',
-      payload: { ...product, quantity: 1 },
-    });
-  };
+	  }); 
 	  // const [products, setProducts] = useState([]);
 	  useEffect(() => {
 		const fetchData = async () => {
@@ -48,10 +41,27 @@ export const ProductDetails = () =>{
 		fetchData(); 
 	  }, [slug]);
 
-	  const [quantity, setQuantity] = useState('1'); 
+	  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { cart } = state;
+  const addToCartHandler = async () => {
+    const existItem = cart.cartItems.find((x) => x._id === product._id);
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    const { data } = await axios.get(`/api/products/${product._id}`);
+    if (data.countInStock < quantity) {
+      window.alert('Sorry. Product is out of stock');
+      return;
+    }
+    ctxDispatch({
+      type: 'CART_ADD_ITEM',
+      payload: { ...product, quantity },
+    });
+	navigate('/cart');
+  };
+
+	  const [qun, setQun] = useState('1'); 
 		 
 	  const handlePriceWithQuantity = (e) => {
-		setQuantity(e.target.value);
+		setQun(e.target.value); 
 	  }
 	  
     return (
@@ -97,15 +107,15 @@ export const ProductDetails = () =>{
 					<div className="productCont p-20">
 						<div className="row pb-15">
 						<div className="col option"> Options: </div> <div className="col"><select name="cars" className="custom-select" onChange={handlePriceWithQuantity}>
-    <option selected value="1">Buy One bottle (£17.99 Per Bottle) {product.price}</option>
-    <option  value="2">Buy two bottle (£15.99 Per Bottle) {product.price*2}</option>
-    <option  value="3">Buy three bottle (£12.99 Per Bottle) {product.price*3}</option> 
-    <option  value="6">Buy six bottle (£10.99 Per Bottle) {product.price*4}</option> 
-  </select></div>   
+						<option selected value="1">Buy One bottle (£17.99 Per Bottle) {product.price}</option>
+						<option  value="2">Buy two bottle (£15.99 Per Bottle) {product.price*2}</option>
+						<option  value="3">Buy three bottle (£12.99 Per Bottle) {product.price*3}</option> 
+						<option  value="6">Buy six bottle (£10.99 Per Bottle) {product.price*6}</option> 
+					</select></div>   
 						</div>
 						<div className="row pb-15">
 						<div className="col option"> Quantity: </div>
-						<div className="col"><input type="number" className="form-control" onChange={(event) => setQuantity(event.target.value)} value={quantity}/> </div> 
+						<div className="col"><input type="number" className="form-control" onChange={(event) => setQun(event.target.value)} value={qun}/> </div> 
 						 
 						</div>
 						<div className="row "> 
