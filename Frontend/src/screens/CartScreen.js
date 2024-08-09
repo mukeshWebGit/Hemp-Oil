@@ -3,7 +3,6 @@ import { Store } from "../Store";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
 export const CartScreen = ()=> {
   const navigate = useNavigate();
     const { state, dispatch: ctxDispatch } = useContext(Store);
